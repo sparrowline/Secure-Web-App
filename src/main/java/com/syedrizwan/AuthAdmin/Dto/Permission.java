@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToMany;
 
 
 @Entity
-public class Permissios {
+public class Permission {
 	
 
     @Id

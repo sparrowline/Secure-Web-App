@@ -3,20 +3,30 @@ package com.syedrizwan.AuthAdmin.Dto;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
-
 @Entity
 @Data
 public class User {
-	private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String username;
     private String password;
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address address;
-    
+
     @ManyToMany
     @JoinTable(
         name = "user_roles",
